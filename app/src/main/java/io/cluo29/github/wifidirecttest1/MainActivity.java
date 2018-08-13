@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                                                     Socket socket = new Socket();
                                                     try {
                                                         socket.bind(null);
-                                                        socket.connect(new InetSocketAddress(groupOwnerAddress,8888),5000);
+                                                        socket.connect(new InetSocketAddress(groupOwnerAddress,8888),15000);
                                                         Log.d(TAG, "@ start connecting to sever "+groupOwnerAddress);
                                                         Log.d(TAG, "@ client connection successfully");
                                                         InputStream inputStream = socket.getInputStream();
