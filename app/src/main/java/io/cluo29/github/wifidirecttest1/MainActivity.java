@@ -48,9 +48,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // scan devices
-        // scan implies being visible to other devices
-        startScanPeers();
+
 
         // create an instance of WiFip2pManager
         mManager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
@@ -69,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
         //Broadcast when a device's details have changed, such as the device's name
         filter.addAction(WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION);
         registerReceiver(mReceiver,filter);
+
+        // scan devices
+        // scan implies being visible to other devices
+        startScanPeers();
     }
 
     public void startScanPeers(){
@@ -119,8 +121,11 @@ public class MainActivity extends AppCompatActivity {
 
                                     Log.d(TAG, "peer detected: "+selectDevice.deviceAddress);
 
-                                    //connect a peer
-                                    //connect(selectDevice);
+                                    if (selectDevice.deviceAddress.equals("aa:0c:63:4d:72:d0")) {
+                                        //connect a peer
+
+                                        connect(selectDevice);
+                                    }
                                 }
                                 if (peers.size() == 0) {
                                     Log.d(TAG, "no peers detected");
